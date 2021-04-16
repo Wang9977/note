@@ -4,7 +4,7 @@
 
 + 将调用组件时的组件标签上绑定的**非props的特性**(class和style除外)向下传递。
 
-+ 在子组件中应当添加==inheritAttrs: false==(避免父作用域的不被认作props的特性绑定应用在子组件的根元素上)。
++ 在子组件中应当添加 ==inheritAttrs: false== (避免父作用域的不被认作props的特性绑定应用在子组件的根元素上)。
 
 + **vm.$attrs** 
 
@@ -112,3 +112,38 @@ mounted(){
 ## 参考
 
 [掘金](https://segmentfault.com/a/1190000020637062)
+
+
+
+
+
+# .sync
+
++ 需要对prop进行“双向绑定” 
+
++ ```vue
+  // 我是父组件
+  <Child v-bind:title.sync="doc.title"></Child>
+  ```
+
++ ```js
+  // 我是子组件
+  this.emit('update:title',newTitle)
+  ```
+
++ **不能和表达式一起用**
+
+  + `v-bind:title.sync=”doc.title + ‘!’”`**无效**
+
++ **不能和字面量对象一起用**
+
+  + `v-bind.sync=”{ title: doc.title }”` **无效**
+
++ 同一个对象设置多个prop
+
+  + ```vue
+    <Child v-bind.sync="doc"></Child>
+    ```
+
+    
+

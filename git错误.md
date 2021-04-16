@@ -1,4 +1,4 @@
-# git push 
+# git push  出现client_loop: send disconnect: Connection reset by peer
 
 ### 文件过大 
 
@@ -27,5 +27,7 @@ fatal: The remote end hung up unexpectedly
      ```text
      git config --global http.postBuffer 157286400
      ```
+
+## **参考**
 
 [知乎](https://zhuanlan.zhihu.com/p/40634410)
