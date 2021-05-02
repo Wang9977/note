@@ -30,4 +30,24 @@
 
 + 重命名分支 ------- git branch -m 老名字 新名字
 
-  
+
+## Git撤销
+
++ 撤销git commit 
+
+  + 没有执行 git push
+
+    1. git log ------ 找到需要撤销的commit_id  上一个版本`HEAD^`
+    2. git reset commit_id  ------  (默认--mixed) 不删除工作空间改动的代码，撤销commit，add .操作 
+    3. git reset --soft commit_id ------- 不删除工作空间改动代码，撤销commit 不撤销add
+    4. git reset --hard commit_id ------ 删除工作区间改动代码，代码恢复到前一commit_id对应的版本，撤销commit ，add.
+
+  + 执行了git push 
+
+    1. git revert commit_id ------- 代码回滚 用新的commit回滚之前的commit，git reset时删除指定commit 可能会导致冲突 revert不会
+    2. git push ------- 把回滚的代码push到远端
+
+    
+
++ commit 修改注释
+  + git commit --amend
