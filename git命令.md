@@ -50,4 +50,20 @@
     
 
 + commit 修改注释
+  
   + git commit --amend
+
+## Git 合并
+
+### git merge
+
++ git merge --no--ff  强行关闭fast-forward  
+
+  + fast-forward 就是当条件允许的时候，git直接把HEAD指针指向合并分支的头，完成合并。没有创建commit，删除分支会丢失分支信息。
+
++ git merge --squash
+
+  把commit进行压缩，用 --squash 进行合并，不移动HEAD，不提交。需要使用新的commit总结，完成最终合并
+
++ ![比较图](https://segmentfault.com/img/bVkJAj)
+
