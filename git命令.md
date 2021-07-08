@@ -67,3 +67,90 @@
 
 + ![比较图](https://segmentfault.com/img/bVkJAj)
 
+
+
+
+
+
+
+## 文件状态变化周期
+
+![文件状态变化周期图](https://git-scm.com/book/en/v2/images/lifecycle.png)
+
+工作区目录下的文件两种状态：
+
++ 已跟踪   工作状态可能是未修改、已修改、已放入暂存区
+
++ 未跟踪
+
+  > 初次克隆某个仓库时，工作目录中所有的文件都属于已跟踪文件
+
+
+
+
+
+## 常用命令含义
+
+
+
+## git status
+
+检查文件状态
+
++ 初次克隆之后使用
+
+  ```shell
+  $ git status
+  On branch master
+  Your branch is up-to-date with 'origin/master'.
+  nothing to commit, working directory clean
+  ```
+
+  
+
++ 修改之前的文件
+
+  ```shell
+  $ echo 'My Project' > README
+  $ git status
+  On branch master
+  Your branch is up-to-date with 'origin/master'.
+  Untracked files:
+    (use "git add <file>..." to include in what will be committed)
+  
+      README
+  
+  nothing added to commit but untracked files present (use "git add" to track)
+  ```
+
+### 简写
+
++ git status -s 
+
+  ```shell
+  $ git status -s
+   M README // 修改过的文件前面有 M 标记。 
+  MM Rakefile
+  A  lib/git.rb   // 新添加到暂存区中的文件前面有 A 标记
+  M  lib/simplegit.rb
+  ?? LICENSE.txt //新添加的未跟踪文件前面有 ?? 标记
+  ```
+
+  输出中有两栏，左栏指明了暂存区的状态，右栏指明了工作区的状态。例如，上面的状态报告显示： `README` 文件在工作区已修改但尚未暂存，而 `lib/simplegit.rb` 文件已修改且已暂存。 `Rakefile` 文件已修，暂存后又作了修改，因此该文件的修改中既有已暂存的部分，又有未暂存的部分。
+
+## git add
+
+1. 开始跟踪文件，并且该文件处于暂存状态，把已跟踪的文件放到暂存区
+2. 合并时把有冲突的文件标记为已解决状态
+
+
+
+## git diff
+
+查看已暂存和未暂存的修改
+
++ 当前做的哪些更新尚未暂存
++ 有哪些更新已暂存并准备好下次提交   
++ git diff --cached 查看已经暂存起来的变化
++ git diff --staged  查看已经暂存的将要添加到下次提交里的内容
+
