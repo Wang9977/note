@@ -89,11 +89,14 @@
 
 
 
-## 常用命令含义
+# 常用命令含义
 
+## git status 和 git diff 区别
 
+1. **git status**  告诉我们 当前仓库的状态，有没有被修改过
+2. **git diff**   告诉我们 文件具体修改了什么内容
 
-## git status
+### git status
 
 检查文件状态
 
@@ -138,14 +141,11 @@
 
   输出中有两栏，左栏指明了暂存区的状态，右栏指明了工作区的状态。例如，上面的状态报告显示： `README` 文件在工作区已修改但尚未暂存，而 `lib/simplegit.rb` 文件已修改且已暂存。 `Rakefile` 文件已修，暂存后又作了修改，因此该文件的修改中既有已暂存的部分，又有未暂存的部分。
 
-## git add
-
-1. 开始跟踪文件，并且该文件处于暂存状态，把已跟踪的文件放到暂存区
-2. 合并时把有冲突的文件标记为已解决状态
 
 
 
-## git diff
+
+### git diff
 
 查看已暂存和未暂存的修改
 
@@ -154,3 +154,44 @@
 + git diff --cached 查看已经暂存起来的变化
 + git diff --staged  查看已经暂存的将要添加到下次提交里的内容
 
+
+
+
+
+## git add
+
+1. 开始跟踪文件，并且该文件处于暂存状态，把已跟踪的文件放到暂存区
+2. 合并时把有冲突的文件标记为已解决状态
+
+
+
+## git fetch 与 git pull
+
+###  git fetch 
+
+> 将更新git remote 中所有的远程仓库所包含分支的最新commit-id, 将其记录到.git/FETCH_HEAD文件中
+
+（1）如果直接使用git fetch，则步骤如下：
+
+创建并更新本 地远程分支。即创建并更新origin/xxx 分支，拉取代码到origin/xxx分支上。
+在FETCH_HEAD中设定当前分支-origin/当前分支对应，如直接到时候git merge就可以将origin/abc合并到abc分支上。
+（2）git fetch origin
+只是手动指定了要fetch的remote。在不指定分支时通常默认为master
+（3）git fetch origin dev
+指定远程remote和FETCH_HEAD，并且只拉取该分支的提交。
+
+### git pull = git fetch + git merge
+
+首先，基于本地的FETCH_HEAD记录，比对本地的FETCH_HEAD记录与远程仓库的版本号，然后git fetch 获得当前指向的远程分支的后续版本的数据，然后再利用git merge将其与本地的当前分支合并。所以可以认为git pull是git fetch和git merge两个步骤的结合。
+
+```shell
+git pull 远程 远程分支：本地分支
+// 取回远程主机某个分支的更新，再与本地的指定分支合并。
+```
+
+
+
+### 总结
+
+1. git fetch是**从远程获取最新版本到本地，但不会自动merge**。
+2. git pull则是**会获取所有远程索引并合并到本地分支中**来。效果相同时git pull将更为快捷。
