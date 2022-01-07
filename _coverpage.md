@@ -1,4 +1,4 @@
-![logo]()
+![logo]
 # note
 
 * Simple and lightweight (~12kb gzipped)
