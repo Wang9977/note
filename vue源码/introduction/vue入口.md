@@ -397,7 +397,7 @@ function updateChildren(
 
 **删除**
 
-到这里，`newStartIdx` 已经移到了 `newEndIdx` 后面了，即 `newStartIdx` 大于 `newEndIdx`，因此跳出 while 循环走 step 13：删除余下的 Old VD，即这里的 `F` 节点
+到这里，`newStartIdx` 已经移到了 `newEndIdx` 后面了，即 `newStartIdx` 大于 `newEndIdx`，因此跳出 while 循环走 step 13：删除余下的 Old Vnode，即这里的 `F` 节点
 
 
 
