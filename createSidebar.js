@@ -29,7 +29,7 @@ const dirTemFun = (name,newPath,level)=>{
   return `${res} [${name}](${newPath})`
 }
 
-const fileName = 'index.md';
+const fileName = '_sidebar.md';
 function isMd(file) {
   let arr = file.split('.')
 
