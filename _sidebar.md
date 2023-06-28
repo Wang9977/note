@@ -2,7 +2,7 @@
 ** [js模块](js/js模块)
 ** [js数字存储](js/数字在js中的存储)
 ** [js-module](js/js-module)
-** [锚点定位](js/锚点定位)
+** [js锚点定位](js/锚点定位)
 
 * [CSS](CSS/height&line-height)
 ** [height&line-height](CSS/height&line-height)
