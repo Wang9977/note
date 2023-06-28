@@ -20,13 +20,13 @@ const fileTemplateFun = (name,newpath,level=1)=>{
   const _resPath = newpath.replace('/workspaces/note/','')
   let res = Array(level).fill('*').join('')
 
-  return `*${res}[${newName}](${_resPath})`
+  return `*${res} [${newName}](${_resPath})`
 }
 
 const dirTemFun = (name,newPath,level)=>{
   let res = Array(level).fill('*').join('')
 
-  return `${res}[${name}](${newPath})`
+  return `${res} [${name}](${newPath})`
 }
 
 const fileName = 'index.md';
@@ -91,27 +91,7 @@ function readDir(fileName='',parentPath='',dirLevel=0) {
   console.log(898989,res);
 
 }
-/**
- * 主要函数
- */
-function run() {
-  if (configs.auto) {
-    const dirs = readDir();
-    for (let i = 0; i < dirs.length; i++) {
-      if (dirs.length === configs.template) {
-        const { fileContent } = configs.template[i];
-        writeFile(`${process.cwd()}/${dirs[i]}`, fileContent);
-      } else {
-        writeFile(`${process.cwd()}/${dirs[i]}`, configs.fileContent);
-      }
-    }
-  } else {
-    for (let i = 0; i < configs.template; i++) {
-      const { fileContent, path } = configs.template[i];
-      writeFile(`${process.cwd()}/${path}`, fileContent);
-    }
-  }
-}
+
 
 readDir()
 
