@@ -8,7 +8,7 @@ let res = ''
 /**
  * 配置文件
  */
-const fileTemplateFun = (name,newpath,level=1)=>{
+const fileTemplateFun = (name,newpath)=>{
 
   const reg = /\W+/
   let isCh = !!name[0].match(reg)
@@ -18,15 +18,18 @@ const fileTemplateFun = (name,newpath,level=1)=>{
 
   const newName = isCh ? 'a'+_name :_name
   const _resPath = newpath.replace('/workspaces/note/','')
+  const level = _resPath.split('/').length
   let res = Array(level).fill('*').join('')
 
-  return `*${res} [${newName}](${_resPath})`
+  return `${res} [${newName}](${_resPath})`
 }
 
-const dirTemFun = (name,newPath,level)=>{
+const dirTemFun = (name,newPath)=>{
+  const _resPath = newPath.replace('/workspaces/note/','')
+  const level = _resPath.split('/').length
   let res = Array(level).fill('*').join('')
 
-  return `${res} [${name}](${newPath})`
+  return `${res} [${name}](${_resPath})`
 }
 
 const fileName = '_sidebar.md';
@@ -56,34 +59,31 @@ function writeFile(path, content) {
  * 读取目录函数
  */
 
-let fileLevel = 0
+
+let dirLevel = 0
 function readDir(fileName='',parentPath='',dirLevel=0) {
+  let fileLevel = 0
   const dir = [];
   console.log( parentPath,111);
   const newPath = fileName? parentPath : process.cwd()
   const files = fs.readdirSync(newPath);
 
-  files.forEach((file) => {
 
-
+  files.forEach((file,index) => {
 
     if(!['.','_'].includes(file[0])){
-      console.log(file,77878);
       if (isDir(file)) {
+        let _path = `${newPath}/${file}`
+        if(index< files.length-1  && isMd(files[index+1])){
+          _path = `${newPath}/${files[index+1]}`
+        }
 
-        dirLevel+=1
-        fileLevel = 0
-        res += dirTemFun(file,'',dirLevel)+ '\n'
+        res += dirTemFun(file,_path,dirLevel)+ '\n'
 
         readDir( file, `${newPath}/${file}`);
 
-      }else if(isMd(file)  ) {
-
-        fileLevel =  dirLevel+1
-        dirLevel=0
-
+      } else if(isMd(file)) {
         res += fileTemplateFun(file,`${newPath}/${file}`,fileLevel) + '\n'
-
       }
     }
 
@@ -91,6 +91,9 @@ function readDir(fileName='',parentPath='',dirLevel=0) {
   console.log(898989,res);
 
 }
+
+// 获取文件夹
+
 
 
 readDir()
