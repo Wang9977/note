@@ -1,12 +1,8 @@
-#  使用ECharts遇到的问题
-
-
+# 使用ECharts遇到的问题
 
 ## 版本问题
 
 使用词云库的时候 word-cloud对应Echarts4版本 word-cloud对应Echarts5版本 需要找到对应版本 ，否则执行出错
-
-
 
 ## 事件处理问题
 
@@ -20,5 +16,4 @@ this.chart.on('click', function (params) {
 })
 ```
 
- 
 

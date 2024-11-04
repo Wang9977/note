@@ -10,3 +10,4 @@ https://panjiachen.github.io/vue-element-admin-site/zh/feature/component/svg-ico
 <svg-icon icon-class="password"  class-name='custom-class' />
 ```
 
+

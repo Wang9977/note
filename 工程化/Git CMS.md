@@ -26,13 +26,13 @@ CMS（内容管理系统）允许将内容与数字体验应用程序的代码�
 
 
 
-###  [Netlify CMS](https://www.netlifycms.org/)
+### [Netlify CMS](https://www.netlifycms.org/)
 
 功能：用户界面 允许通过富文本编辑，允许拖拽媒体上传
 
 优点：开源
 
-缺点：仅限于管理静态站点 权限管理仅限于 GitHub gitlab b
+缺点：仅限于管理静态站点 权限管理仅限于 GitHub gitlab 
 
 
 

@@ -10,7 +10,7 @@ launchctl stop com.apple.TextInputSwitcher
 launchctl start com.apple.TextInputSwitcher
 ```
 
-##
+## 
 
 ## 由大小写切换错误导致的输入法问题
 
