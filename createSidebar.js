@@ -22,8 +22,9 @@ const dirTemFun = (name, newPath) => {
   const _resPath = newPath.replace(process.cwd() + '/', '');
   const level = _resPath.split('/').length;
   let res = Array(level).fill('*').join('');
+  console.log(res,name, _resPath,`${res} [${name}](${_resPath!==name?_resPath:'/'})`,_resPath===name);
 
-  return `${res} [${name}](${_resPath})`;
+  return `${res} [${name}](${_resPath!==name?_resPath:'/'})`;
 }
 
 const fileName = '_sidebar.md';
@@ -66,6 +67,7 @@ function readDir(fileName = '', parentPath = '', dirLevel = 0) {
         if (index < files.length - 1 && isMd(files[index + 1])) {
           _path = `${newPath}/${files[index + 1]}`;
         }
+
 
         res += dirTemFun(file, _path, dirLevel) + '\n';
         readDir(file, `${newPath}/${file}`);
