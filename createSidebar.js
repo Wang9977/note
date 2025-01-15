@@ -22,9 +22,11 @@ const dirTemFun = (name, newPath) => {
   const _resPath = newPath.replace(process.cwd() + '/', '');
   const level = _resPath.split('/').length;
   let res = Array(level).fill('*').join('');
-  console.log(res,name, _resPath,`${res} [${name}](${_resPath!==name?_resPath:'/'})`,_resPath===name);
+  const __resPath = _resPath!== name? _resPath : `${_resPath}/index.md`;
 
-  return `${res} [${name}](${_resPath!==name?_resPath:'/'})`;
+
+
+  return `${res} [${name}](${__resPath})`;
 }
 
 const fileName = '_sidebar.md';
