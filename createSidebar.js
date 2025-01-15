@@ -7,13 +7,16 @@ let res = ''
  * 配置文件
  */
 const fileTemplateFun = (name, newpath) => {
-  const reg = /\W+/;
-  let isCh = !!name[0].match(reg);
+
   const _name = path.basename(name, '.md');
   const newName = _name;
   const _resPath = newpath.replace(process.cwd() + '/', '');
   const level = _resPath.split('/').length;
   let res = Array(level).fill('*').join('');
+  // console.log(22,newpath,_resPath);
+
+
+  if(newName==='index') return ''
 
   return `${res} [${newName}](${_resPath})`;
 };
@@ -23,8 +26,9 @@ const dirTemFun = (name, newPath) => {
   const level = _resPath.split('/').length;
   let res = Array(level).fill('*').join('');
   const __resPath = _resPath!== name? _resPath : `${_resPath}/index.md`;
+  // console.log(newPath, __resPath);
 
-
+// console.log('11',`${res} [${name}](${__resPath})`);
 
   return `${res} [${name}](${__resPath})`;
 }
@@ -65,16 +69,17 @@ function readDir(fileName = '', parentPath = '', dirLevel = 0) {
   files.forEach((file, index) => {
     if (!['.', '_'].includes(file[0])) {
       if (isDir(file)) {
+
         let _path = `${newPath}/${file}`;
-        if (index < files.length - 1 && isMd(files[index + 1])) {
-          _path = `${newPath}/${files[index + 1]}`;
-        }
+
 
 
         res += dirTemFun(file, _path, dirLevel) + '\n';
         readDir(file, `${newPath}/${file}`);
       } else if (isMd(file)) {
-        res += fileTemplateFun(file, `${newPath}/${file}`, dirLevel) + '\n';
+
+          res += fileTemplateFun(file, `${newPath}/${file}`, dirLevel) + '\n';
+
       }
     }
   });
