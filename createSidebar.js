@@ -1,4 +1,3 @@
-const { log } = require('console');
 const fs = require('fs');
 const path = require('path')
 
@@ -11,7 +10,7 @@ const fileTemplateFun = (name, newpath) => {
   const reg = /\W+/;
   let isCh = !!name[0].match(reg);
   const _name = path.basename(name, '.md');
-  const newName = isCh ? 'a' + _name : _name;
+  const newName = _name;
   const _resPath = newpath.replace(process.cwd() + '/', '');
   const level = _resPath.split('/').length;
   let res = Array(level).fill('*').join('');
