@@ -12,6 +12,8 @@
 ** [git命令](Git/git命令.md)
 ** [git错误](Git/git错误.md)
 * [README](README.md)
+* [blog](blog)
+** [GPUVSCPU](blog/GPUVSCPU.md)
 * [bug-fix](bug-fix)
 ** [MacOS_EN-CH.MD](bug-fix/MacOS_EN-CH.MD)
 ** [Safari](bug-fix/Safari.md)
